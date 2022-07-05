@@ -1,14 +1,8 @@
 import  {useState, useEffect} from 'react'
+import { CheckList } from "./CheckList";
+
 const url = 'https://opendata.resas-portal.go.jp/api/v1/prefectures';
 const apiKey = 'ZVOmBi4eB6PMjAhNNcfZgdoAAFfKBtN0JuokIQ6c';
-
-const style = {
-    display: "inline-block",
-    padding: "6px",
-    width: "100px",
-    height: "10px",
-
-  }
 
 export const ApiFetch = () => {
     const [prefectures, setPreFectures] = useState([])
@@ -20,16 +14,20 @@ export const ApiFetch = () => {
             setPreFectures(resdata.result)
         })
     },[])
+
     
+    const ClickCheck = (event) => {
+        console.log(event.target.id)
+    }
+
     return (
         <div >
         <h4>都道府県一覧</h4>
         <ul>
-        {
-             prefectures.map(post => <li style={style} key={post.prefCode}>
-            <input type="checkbox" name={post.prefName} onChange={null} id={"checkbox" + post.prefCode}></input> 
-            {post.prefName}</li>)
-        }
+        <CheckList 
+        prefectures ={prefectures}
+        onChange={ClickCheck}
+        />
         </ul>
       </div>
     );
