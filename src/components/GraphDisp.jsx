@@ -4,27 +4,30 @@ import HighchartsReact from 'highcharts-react-official'
 
 
 
-export const GraphDisp = ({population}) => {
+export const GraphDisp = ({series}) => {
 
+   
+  
     const options = {
         title: {
-          text: '人口増減率'
+          text: '人口総数'
         },
         plotOptions: {
           series: {
             label: {
               connectorAllowed: false
             },
-            pointInterval: 18,
+            pointInterval: 5,
             pointStart: 1960
           }
         },
-        series: [
-            {name: "北海道", data: [population]}
-    ]
+        accessibility: {
+          enabled:false
+        },
+        series: series
     }
-
-
+    
+    
     return(
         <>
         <HighchartsReact highcharts={Highcharts} options={options} />
