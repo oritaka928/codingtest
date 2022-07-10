@@ -10,8 +10,6 @@ export const ApiFetch = () => {
   const [series, setSeries] = useState([]);
 
   //都道府県一覧を取得(初回のみ)
-  console.log(process.env.REACT_APP_API_KEY);
-
   useEffect(() => {
     fetch(url, { headers: { 'X-API-KEY': process.env.REACT_APP_API_KEY } })
       .then((response) => response.json())
