@@ -1,13 +1,10 @@
 import './App.css';
-import { ApiFetch } from "./components/ApiFetch";
-
+import { ApiFetch } from './components/ApiFetch';
 
 function App() {
-
-
   return (
     <div>
-    <ApiFetch />
+      <ApiFetch />
     </div>
   );
 }
