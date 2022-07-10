@@ -4,7 +4,6 @@ import { GraphDisp } from './GraphDisp';
 
 const url = 'https://opendata.resas-portal.go.jp/api/v1/prefectures';
 const purl = 'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=';
-import apiKey from '../ApiKey';
 
 export const ApiFetch = () => {
   const [prefectures, setPreFectures] = useState([]);
@@ -12,7 +11,7 @@ export const ApiFetch = () => {
 
   //都道府県一覧を取得(初回のみ)
   useEffect(() => {
-    fetch(url, { headers: { 'X-API-KEY': apiKey } })
+    fetch(url, { headers: { 'X-API-KEY': process.env.API_KEY } })
       .then((response) => response.json())
       .then((resdata) => {
         setPreFectures(resdata.result);
@@ -35,7 +34,7 @@ export const ApiFetch = () => {
 
     if (fetchflg === true) {
       //url+id
-      await fetch(`${purl}${event.target.id}`, { headers: { 'X-API-KEY': apiKey } })
+      await fetch(`${purl}${event.target.id}`, { headers: { 'X-API-KEY': process.env.API_KE } })
         .then((response) => response.json())
         .then((resdata) => {
           if (resdata.result.data[0].data.length !== 0) {
