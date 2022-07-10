@@ -14,7 +14,6 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'no-console': 'error',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
